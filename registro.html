@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UTSC Salud — Registro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-page">
+
+  <a href="login.html" class="auth-back" aria-label="Volver al login"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg></a>
+
+  <div class="auth-card" role="main">
+    <h1 class="auth-card__title">UTSC Salud</h1>
+    <p class="auth-card__subtitle">Registro de cuenta institucional</p>
+
+    <div id="auth-feedback" class="auth-feedback auth-feedback--error hidden" role="alert"></div>
+
+    <form id="registro-form" novalidate>
+      <input type="email"    id="reg-email"     class="auth-input" placeholder="Correo electrónico"            autocomplete="email"        required />
+      <input type="password" id="reg-password"  class="auth-input" placeholder="Contraseña (Mín. 6 caracteres)" autocomplete="new-password" required minlength="6" />
+      <input type="password" id="reg-confirm"   class="auth-input" placeholder="Confirmar contraseña"           autocomplete="new-password" required />
+
+      <label class="auth-terms">
+        <input type="checkbox" id="terms-check" required />
+        <span>Acepto los <a href="terminos.html" target="_blank" rel="noopener noreferrer" class="terms-link">Términos y Condiciones</a></span>
+      </label>
+
+      <button type="submit" id="registro-btn" class="btn--auth">Registrarse</button>
+    </form>
+
+    <p class="auth-switch">¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+  </div>
+
+  <script type="module" src="js/auth.js"></script>
+  <!-- Cargar librería EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+     emailjs.init({
+       publicKey: "Ng0h0xM_Aw0_7W3Bi", 
+     });
+  })();
+</script>
+</body>
+</html>

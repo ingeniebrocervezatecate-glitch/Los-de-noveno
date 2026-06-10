@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UTSC Salud — Biblioteca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar" aria-label="Navegación principal">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__logo">UTSC Salud</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    
+    <ul class="nav-menu" id="nav-menu" role="menubar">
+      <li><a href="index.html" role="menuitem">Inicio</a></li>
+      <li><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
+      <li><a href="contacto.html" role="menuitem">Contacto</a></li>
+      
+      <!-- Área de usuario integrada al menú para arreglar la vista móvil -->
+      <li class="user-area" id="user-area">
+        <div class="nav-divider" id="nav-div"></div>
+        <!-- Quitamos la clase hidden por defecto y ponemos tu texto base -->
+        <span class="user-email hidden" id="user-email"></span>
+        <button class="btn btn--logout hidden" id="btn-logout">Cerrar Sesión</button>
+        <button class="btn btn--login" id="btn-login">Iniciar Sesión</button>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- Header con buscador -->
+      <div class="biblioteca-header">
+        <h1>Biblioteca de Salud y Prevención</h1>
+
+        <div class="search-bar" role="search">
+          <!-- Buscador texto (arriba en móvil) -->
+          <div class="search-bar__input">
+            <span class="search-bar__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);width:18px;height:18px;">
+                <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
+              </svg>
+            </span>
+            <input
+              type="search"
+              id="buscador"
+              placeholder="Buscar por título, autor, o palabras clave…"
+              aria-label="Buscar libros"
+            />
+          </div>
+          <!-- Filtro custom (abajo en móvil, izquierda en desktop) -->
+          <div class="search-bar__filter" id="filtro-wrap">
+            <span class="search-bar__filter-label" id="filtro-label">Todas las áreas</span>
+            <span class="search-bar__filter-icon" aria-hidden="true">▼</span>
+            <ul class="search-bar__dropdown" id="filtro-dropdown" role="listbox" aria-label="Filtrar por área">
+              <li role="option" data-value="">Todas las áreas</li>
+              <li role="option" data-value="Salud Comunitaria">Salud Comunitaria</li>
+              <li role="option" data-value="Nutrición">Nutrición</li>
+              <li role="option" data-value="Pedagogía">Pedagogía</li>
+              <li role="option" data-value="Salud Mental">Salud Mental</li>
+              <li role="option" data-value="Medicina Preventiva">Medicina Preventiva</li>
+            </ul>
+          </div>
+          <!-- Input oculto para mantener compatibilidad con main.js -->
+          <select id="filtro-seccion" aria-hidden="true" style="display:none"></select>
+        </div>
+      </div>
+
+      <!-- Estado / feedback -->
+      <div id="libros-spinner" class="spinner" role="status" aria-live="polite">Cargando catálogo…</div>
+      <p  id="libros-error"   class="libros-error hidden" role="alert"></p>
+      <p  id="libros-count"   class="libros-count  hidden"></p>
+
+      <!-- Grid de libros -->
+      <section class="biblioteca-section">
+        <div id="libros-grid" class="libros-grid" aria-label="Catálogo de libros"></div>
+        <p id="no-results" class="no-results hidden">No se encontraron libros con esa búsqueda.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <strong>UTSC Salud</strong> — Proyecto de Biblioteca Digital Universitaria.</p>
+    <nav class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    // Custom dropdown filtro
+    const filtroWrap     = document.getElementById('filtro-wrap');
+    const filtroLabel    = document.getElementById('filtro-label');
+    const filtroDropdown = document.getElementById('filtro-dropdown');
+    const filtroSelect   = document.getElementById('filtro-seccion');
+    const filtroIcon     = filtroWrap.querySelector('.search-bar__filter-icon');
+
+    filtroWrap.addEventListener('click', (e) => {
+      const isOpen = filtroDropdown.classList.toggle('open');
+      filtroIcon.style.transform = isOpen ? 'rotate(180deg)' : '';
+      e.stopPropagation();
+    });
+
+    filtroDropdown.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', (e) => {
+        const val = li.dataset.value;
+        filtroLabel.textContent = li.textContent;
+        // Sincronizar con el select oculto y disparar change
+        filtroSelect.value = val;
+        filtroSelect.dispatchEvent(new Event('change'));
+        filtroDropdown.classList.remove('open');
+        filtroIcon.style.transform = '';
+        e.stopPropagation();
+      });
+    });
+
+    document.addEventListener('click', () => {
+      filtroDropdown.classList.remove('open');
+      filtroIcon.style.transform = '';
+    });
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

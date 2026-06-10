@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones — UTSC Salud</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #2ecb6e;
+      --green-dk:   #23a858;
+      --bg-dark:    #0b2622;
+      --bg-card:    #163530;
+      --bg-card-2:  #1e4540;
+      --text:       #e0eeea;
+      --text-muted: #5a7a75;
+      --text-soft:  #b8d4cc;
+      --radius:     12px;
+      --font-display: 'Sora', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: radial-gradient(ellipse at 60% 40%, #1a4540 0%, #0b2c28 55%, #071e1b 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: rgba(22, 53, 48, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-back {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+      flex-shrink: 0;
+    }
+    .header-back:hover { background: rgba(255,255,255,.14); border-color: var(--green); }
+    .header-back svg { display: block; }
+    .header-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--green);
+    }
+    .header-title {
+      font-size: .82rem;
+      color: var(--text-muted);
+      margin-left: auto;
+      font-weight: 600;
+      letter-spacing: .4px;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── Hero ── */
+    .doc-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .doc-hero__icon {
+      width: 64px; height: 64px;
+      background: rgba(46,203,110,.1);
+      border: 1px solid rgba(46,203,110,.2);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 1.8rem;
+    }
+    .doc-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: .5rem;
+    }
+    .doc-hero p { color: var(--text-muted); font-size: .9rem; }
+    .doc-hero .badge {
+      display: inline-block;
+      margin-top: .75rem;
+      background: rgba(46,203,110,.1);
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 700;
+      padding: .3rem .9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(46,203,110,.22);
+      letter-spacing: .3px;
+    }
+
+    /* ── Sections ── */
+    .doc-section {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.1rem;
+      border: 1px solid rgba(255,255,255,.05);
+      transition: border-color .2s;
+    }
+    .doc-section:hover { border-color: rgba(46,203,110,.12); }
+
+    .doc-section h2 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: .9rem;
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+    }
+    .doc-section h2 .num {
+      width: 26px; height: 26px;
+      background: rgba(46,203,110,.13);
+      border-radius: 8px;
+      font-size: .75rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .doc-section p {
+      font-size: .91rem;
+      color: var(--text-soft);
+      margin-bottom: .65rem;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section ul { list-style: none; padding: 0; }
+    .doc-section ul li {
+      font-size: .88rem;
+      color: var(--text-soft);
+      padding: .4rem 0 .4rem 1.3rem;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .doc-section ul li:last-child { border-bottom: none; }
+    .doc-section ul li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── Highlight box ── */
+    .highlight-box {
+      background: rgba(46,203,110,.06);
+      border: 1px solid rgba(46,203,110,.18);
+      border-left: 3px solid var(--green);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: .85rem;
+      font-size: .875rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+    .highlight-box strong { color: var(--green); }
+
+    /* ── Volver btn ── */
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin: 2.25rem auto 0;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: .85rem 2rem;
+      font-family: var(--font-display);
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: flex;
+      width: fit-content;
+      margin-inline: auto;
+    }
+    .btn-back:hover { background: var(--green-dk); transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    .doc-footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: .82rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 2rem;
+    }
+    .doc-footer a { color: var(--green); text-decoration: none; }
+    .doc-footer a:hover { text-decoration: underline; }
+    .doc-footer strong { color: #fff; }
+
+    @media (max-width: 600px) {
+      main { padding: 2rem 1rem 4rem; }
+      .doc-section { padding: 1.25rem 1.25rem; }
+      .doc-hero h1 { font-size: 1.5rem; }
+      .header-title { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="registro.html" class="header-back" aria-label="Volver al registro">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+    </a>
+    <span class="header-brand">UTSC Salud</span>
+    <span class="header-title">Documento legal</span>
+  </header>
+
+  <main>
+
+    <div class="doc-hero">
+      <div class="doc-hero__icon">📋</div>
+      <h1>Términos y Condiciones</h1>
+      <p>Lee detenidamente antes de crear tu cuenta institucional</p>
+      <span class="badge">Última actualización: junio 2026</span>
+    </div>
+
+    <!-- 1 -->
+    <div class="doc-section">
+      <h2><span class="num">1</span> Aceptación de los términos</h2>
+      <p>Al registrarte y utilizar la plataforma <strong>UTSC Salud</strong>, aceptas cumplir con estos Términos y Condiciones en su totalidad. Si no estás de acuerdo con alguna parte de los mismos, te pedimos que no hagas uso del servicio.</p>
+      <p>Estos términos aplican a todos los usuarios con acceso institucional: estudiantes, docentes y personal administrativo de la <strong>Universidad Tecnológica de Santa Catarina (UTSC)</strong>.</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="doc-section">
+      <h2><span class="num">2</span> Descripción del servicio</h2>
+      <p>UTSC Salud es una plataforma digital de carácter educativo e institucional orientada a la <strong>prevención y promoción de la salud</strong>. Ofrece acceso a:</p>
+      <ul>
+        <li>Contenido educativo alineado a los Objetivos de Desarrollo Sostenible (ODS 3 y ODS 4)</li>
+        <li>Biblioteca digital de recursos sobre salud, bienestar y educación continua</li>
+        <li>Materiales de apoyo académico para la comunidad universitaria</li>
+        <li>Avisos y comunicados institucionales relacionados con la salud</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Acceso exclusivo:</strong> El registro está restringido a correos institucionales con dominio <strong>@virtual.utsc.edu.mx</strong>. Se requiere verificación de correo para activar la cuenta.
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="doc-section">
+      <h2><span class="num">3</span> Aviso de privacidad</h2>
+      <p>En cumplimiento con la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</strong>, UTSC Salud recaba y trata únicamente los siguientes datos:</p>
+      <ul>
+        <li>Correo electrónico institucional (utilizado exclusivamente para autenticación)</li>
+        <li>Datos de sesión y actividad dentro de la plataforma</li>
+        <li>Preferencias de usuario y configuración de cuenta</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Importante:</strong> Tus datos no serán vendidos, cedidos ni compartidos con terceros con fines comerciales. Solo serán utilizados para la operación y mejora de la plataforma.
+      </div>
+      <p style="margin-top:.85rem">Los datos son almacenados de forma segura mediante los servicios de <strong>Firebase (Google Cloud)</strong>, que cumple con estándares internacionales de seguridad (ISO 27001, SOC 2).</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="doc-section">
+      <h2><span class="num">4</span> Seguridad de la plataforma</h2>
+      <p>La plataforma implementa las siguientes medidas para proteger tu información:</p>
+      <ul>
+        <li>Transmisión de datos cifrada mediante <strong>HTTPS/TLS</strong></li>
+        <li>Autenticación gestionada por <strong>Firebase Authentication</strong> con encriptación de contraseñas</li>
+        <li>Sin almacenamiento local de contraseñas en texto plano</li>
+        <li>Tokens de sesión con expiración automática</li>
+        <li>Protección contra ataques de fuerza bruta mediante bloqueo temporal</li>
+        <li>Verificación obligatoria de correo electrónico al momento del registro</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Recomendación:</strong> Usa una contraseña única para esta plataforma y no la compartas con nadie. UTSC Salud <strong>nunca</strong> te pedirá tu contraseña por correo, mensaje o llamada telefónica.
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="doc-section">
+      <h2><span class="num">5</span> Obligaciones del usuario</h2>
+      <p>Al usar la plataforma, el usuario se compromete a:</p>
+      <ul>
+        <li>Proporcionar información veraz al momento del registro</li>
+        <li>No compartir sus credenciales de acceso con terceros</li>
+        <li>Usar la plataforma exclusivamente con fines educativos e institucionales</li>
+        <li>No intentar acceder a cuentas ajenas o vulnerar la seguridad del sistema</li>
+        <li>Reportar cualquier comportamiento sospechoso al equipo de soporte institucional</li>
+      </ul>
+    </div>
+
+    <!-- 6 -->
+    <div class="doc-section">
+      <h2><span class="num">6</span> Derechos del usuario (ARCO)</h2>
+      <p>Conforme a la LFPDPPP, tienes derecho a <strong>Acceder, Rectificar, Cancelar u Oponerte</strong> al tratamiento de tus datos personales en cualquier momento.</p>
+      <div class="highlight-box">
+        <strong>Para ejercer tus derechos ARCO:</strong> Envía un correo al responsable de datos personales de UTSC desde tu cuenta institucional, indicando el derecho que deseas ejercer.<br/>
+        <strong style="margin-top:.4rem;display:block">Tiempo de respuesta:</strong> máximo 20 días hábiles conforme a la ley.
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="doc-section">
+      <h2><span class="num">7</span> Modificaciones</h2>
+      <p>UTSC se reserva el derecho de actualizar estos Términos y Condiciones en cualquier momento. Los cambios serán notificados a través de la plataforma o al correo institucional registrado. El uso continuado del servicio después de la notificación implica la aceptación de los nuevos términos.</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="doc-section">
+      <h2><span class="num">8</span> Contacto y soporte</h2>
+      <p>Para dudas, aclaraciones o solicitudes relacionadas con estos términos o el uso de la plataforma, comunícate con nosotros a través del formulario de contacto en la plataforma o directamente con la institución:</p>
+      <ul>
+        <li>Plataforma: <a href="contacto.html" style="color:var(--green);font-weight:600;">utsc-salud.web.app/contacto</a></li>
+        <li>Institución: Universidad Tecnológica de Santa Catarina</li>
+        <li>Ubicación: Santa Catarina, Nuevo León, México</li>
+        <li>Sitio institucional: <a href="https://www.utsc.edu.mx" target="_blank" rel="noopener" style="color:var(--green);font-weight:600;">www.utsc.edu.mx</a></li>
+      </ul>
+    </div>
+
+    <a href="registro.html" class="btn-back">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Volver al registro
+    </a>
+
+    <div class="doc-footer">
+      <p><strong>UTSC Salud</strong> — Universidad Tecnológica de Santa Catarina</p>
+      <p style="margin-top:.4rem">© 2026 Todos los derechos reservados &nbsp;·&nbsp; Santa Catarina, Nuevo León, México</p>
+    </div>
+
+  </main>
+
+</body>
+</html>

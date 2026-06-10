@@ -1,0 +1,16 @@
+# Firebase
+.firebase/
+firebase-debug.log
+.firebaserc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node (por si se agrega Firebase CLI local)
+node_modules/
+npm-debug.log

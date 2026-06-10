@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="UTSC Salud — Biblioteca digital especializada en Salud Integral y Educación Continua (ODS 3 y ODS 4)." />
+  <title>UTSC Salud — Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR (fondo claro) -->
+  <header>
+<nav class="navbar" aria-label="Navegación principal">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__logo">UTSC Salud</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    
+    <ul class="nav-menu" id="nav-menu" role="menubar">
+      <li><a href="index.html" role="menuitem">Inicio</a></li>
+      <li><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
+      <li><a href="contacto.html" role="menuitem">Contacto</a></li>
+      
+      <!-- Área de usuario integrada al menú para arreglar la vista móvil -->
+      <li class="user-area" id="user-area">
+        <div class="nav-divider" id="nav-div"></div>
+        <!-- Quitamos la clase hidden por defecto y ponemos tu texto base -->
+        <span class="user-email hidden" id="user-email"></span>
+        <button class="btn btn--logout hidden" id="btn-logout">Cerrar Sesión</button>
+        <button class="btn btn--login" id="btn-login">Iniciar Sesión</button>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+  </header>
+
+<main>
+    <!-- HERO (Estilo integrado como en Contacto) -->
+    <section class="home-hero">
+      <div class="container">
+        <h1>Educación y Prevención para tu Bienestar</h1>
+        <p>Tu plataforma digital de confianza para consultar material especializado en Salud Integral y Educación Continua (ODS 3 y 4).</p>
+        <a href="biblioteca.html" class="btn btn--primary" style="margin-top: .5rem;">Explorar Catálogo</a>
+      </div>
+    </section>
+
+    <!-- ODS (Tarjetas oscuras como en Biblioteca) -->
+    <section class="ods-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Nuestro Compromiso Global</h2>
+        </div>
+        <div class="ods-grid">
+
+          <article class="ods-card">
+            <div class="ods-card__icon"><img src="img/ods3.png" alt="ODS 3 - Salud y Bienestar" /></div>
+            <h3>Salud y Bienestar (ODS 3)</h3>
+            <p>Promovemos una vida sana y el acceso a información médica preventiva para todas las edades.</p>
+          </article>
+
+          <article class="ods-card">
+            <div class="ods-card__icon"><img src="img/ods4.png" alt="ODS 4 - Educación de Calidad" /></div>
+            <h3>Educación de Calidad (ODS 4)</h3>
+            <p>Facilitamos recursos educativos gratuitos para fortalecer el aprendizaje técnico y profesional.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; <span id="year"></span> <strong>UTSC Salud</strong> — Proyecto de Biblioteca Digital Universitaria.</p>
+    <nav class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
