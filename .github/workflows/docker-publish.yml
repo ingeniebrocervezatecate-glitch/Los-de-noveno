@@ -21,5 +21,7 @@ jobs:
 
     - name: Construir y subir imagen Docker
       run: |
-        docker build -t ghcr.io/${{ github.repository }}:latest .
-        docker push ghcr.io/${{ github.repository }}:latest
+        # Convertimos el nombre del repositorio a minúsculas para cumplir con la regla de Docker
+        REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+        docker build -t ghcr.io/$REPO_LOWER:latest .
+        docker push ghcr.io/$REPO_LOWER:latest
