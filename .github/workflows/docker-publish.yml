@@ -1,0 +1,26 @@
+name: Crear Contenedor de Evidencia
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: Clonar repositorio
+      uses: actions/checkout@v4
+
+    - name: Iniciar sesion en GitHub Packages
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Construir y subir imagen Docker
+      run: |
+        docker build -t ghcr.io/${{ github.repository_owner }}/los-de-noveno:latest .
+        docker push ghcr.io/${{ github.repository_owner }}/los-de-noveno:latest
+      
